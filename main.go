@@ -57,7 +57,7 @@ func (f File) Filepath() string {
 }
 
 var headerMatcher = regexp.MustCompile(`^#`)
-var includeMatcher = regexp.MustCompile(`^\[include]\(([^)]+?)\)$`)
+var mergeMatcher = regexp.MustCompile(`^\[merge]\(([^)]+?)\)$`)
 
 func (f File) Parse() (lines string, err error) {
 	var scanner *bufio.Scanner
@@ -85,7 +85,7 @@ func (f File) Parse() (lines string, err error) {
 			f.Builder.WriteByte('\n')
 			continue
 		}
-		matches := includeMatcher.FindStringSubmatch(line)
+		matches := mergeMatcher.FindStringSubmatch(line)
 		if len(matches) != 0 {
 			file := filepath.Join(f.Dir, matches[1])
 			nf := NewInputFile(file, f.Level+1)
