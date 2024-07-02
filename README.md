@@ -1,2 +1,20 @@
 # readme-merge
-CLI tool to allow merging child documents into one README.md
+CLI tool to allow merging child documents into one `README.md`
+
+**BE CAREFUL**: This will _**overwrite**_ your `README.md` file. 
+
+## Usage
+### Syntax
+```go
+readme-merge <index_file> <readme_path>
+```
+### Example
+```go
+readme-merge md/_index.md .
+```
+
+## Where Used
+- [github.com/mikeschinkel/php-file-scoped-visibility-rfc/](https://github.com/mikeschinkel/php-file-scoped-visibility-rfc/)
+
+## License 
+MIT
