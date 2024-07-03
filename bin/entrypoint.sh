@@ -3,11 +3,16 @@
 main() {
   index_filepath="$1"
   readme_dir="$2"
+  do_commit="$3"
 
   # Run your Go application to generate README.md
   if ! /app/bin/readme-merge "${index_filepath}" "${readme_dir}" ; then
     echo "README Merge failed. README.md likely not updated." >&2
     exit 1
+  fi
+
+  if [ "${do_commit}" != "commit" ]; then
+    return
   fi
 
   # Configure Git
@@ -32,4 +37,4 @@ main() {
   fi
 }
 
-main "$1" "$2"
+main "$1" "$2" "$3"
