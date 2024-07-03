@@ -90,6 +90,7 @@ To solve this, README Merge demotes any headings of a merged document by one. Fo
 ```
 #### Whereas in `./README.md`
 ```markdown
+# Example README 
 ## Usage
 ```
 
@@ -101,6 +102,7 @@ This is further true of nested documents. This is `docker-usage.md` is merged in
 ```
 #### Whereas in `./README.md`
 ```markdown
+# Example README 
 ## Usage
 ### Docker Usage
 ```
