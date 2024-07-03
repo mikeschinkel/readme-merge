@@ -13,6 +13,8 @@ main() {
   # Configure Git
   git config --global user.name 'readme-merge-github-action[bot]'
   git config --global user.email 'readme-merge-github-action@users.noreply.github.com'
+
+  # See https://medium.com/@janloo/github-actions-detected-dubious-ownership-in-repository-at-github-workspace-how-to-fix-b9cc127d4c04
   git config --global --add safe.directory /github/workspace
 
   git status
