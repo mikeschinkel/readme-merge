@@ -10,14 +10,12 @@ inputs:
     description: 'The directory containing the README.md to update; typically this is simply dot (.)'
     required: true
     default: '.'
-
+outputs:
+  readme:
+    description: 'Generated README.md content'
 runs:
-  using: "composite"
-  steps:
-  - name: Run Docker Container
-    shell: bash
-    run: |
-      docker run --rm \
-        -v $GITHUB_WORKSPACE:/app/repo \
-        mikeschinkel/readme-merge:latest \
-        /app/repo ${{ inputs.index_filepath }} ${{ inputs.readme_dir }}
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+  - /github/workspace/${{ inputs.index_filepath }}
+  - /github/workspace/${{ inputs.readme_dir }}
