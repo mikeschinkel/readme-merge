@@ -13,6 +13,7 @@ main() {
   # Configure Git
   git config --global user.name 'readme-merge-github-action[bot]'
   git config --global user.email 'readme-merge-github-action@users.noreply.github.com'
+  git config --global --add safe.directory /github/workspace
 
   git status
 
