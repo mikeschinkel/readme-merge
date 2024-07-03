@@ -11,7 +11,7 @@ COPY . .
 RUN go mod download
 
 # Build the Go application
-RUN go build -o ./readme-merge
+RUN go build -o ./bin/readme-merge
 
 # Stage 2: Create a minimal image with the Go binary
 FROM alpine:3.20.1
@@ -22,9 +22,14 @@ RUN apk add --no-cache git
 # Set the working directory inside the final container
 WORKDIR /app
 
-# Copy the Go binary from the builder container
-COPY --from=builder /app/readme-merge .
+# Create the bin directory in the final container
+RUN mkdir -p /app/bin
+
+# Copy the Go binary and entrypoint script from the builder container
+COPY --from=builder /app/bin/* /app/bin/
+
+# Ensure the entrypoint script is executable
+RUN chmod +x /app/bin/entrypoint.sh
 
 # Command to run your application
-ENTRYPOINT ["/app/entrypoint.sh"]
-
+ENTRYPOINT ["/app/bin/entrypoint.sh"]
