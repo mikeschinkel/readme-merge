@@ -195,6 +195,7 @@ To solve this, README Merge demotes any headings of a merged document by one. Fo
 ```
 ##### Whereas in `./README.md`
 ```markdown
+# Example README 
 ## Usage
 ```
 
@@ -206,6 +207,7 @@ This is further true of nested documents. This is `docker-usage.md` is merged in
 ```
 ##### Whereas in `./README.md`
 ```markdown
+# Example README 
 ## Usage
 ### Docker Usage
 ```
@@ -230,6 +232,7 @@ _Directory tree for Markdown source files for this repo._
 There is a very simply set of Markdown documents in the `/samples/md` directory. 
 
 ![Samples directory tree](./md/assets/samples-source-tree.png)
+_Directory tree for sample Markdown source files._
 
 ### Building the sample `README.md` 
 You can see how the samples work by running the following commands which will build a Docker container to run `go build` and then run `readme-merge` which will merge the sample docs into an example `README.md` file as `/samples/README.md` and then use `less` to view it:
@@ -240,7 +243,7 @@ cd readme-merge/samples
 ./build-sample-readme.sh
 ```
 
-### Requirements for running `build-sample-readme.sh`
+### Requirements for running `./md/build-sample-readme.sh`
 To build the sample `README.md` you need:
 
 - To be running a flavor of *nix _(Linux, macOS, WSL, etc)_
@@ -253,6 +256,14 @@ There is not batch file or PowerShell script for use if you are running Windows 
 - [github.com/mikeschinkel/php-file-scoped-visibility-rfc](https://github.com/mikeschinkel/php-file-scoped-visibility-rfc)
 
 If you use README Merge please consider submitting a pull request with a link to your repo using to contained in `./md/where-used.md`.
+
+## Known Issues
+
+1. Not Table of Contents generation.
+2. Does not update... 
+   - ...links to images, meaning you have to author with broken images.
+   - ...relative links to documents in the repo meaning you have to author with broken links.
+3. GitHub Action does not handle not having a starting README.md correctly.
 
 ## License 
 MIT
