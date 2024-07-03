@@ -2,7 +2,7 @@
 
 There is a very simply set of Markdown documents in the `/samples/md` directory. 
 
-![Samples directory tree](./md/assets/samples-tree.png)
+![Samples directory tree](./md/assets/samples-source-tree.png)
 
 ## Building the sample `README.md` 
 You can see how the samples work by running the following commands which will build a Docker container to run `go build` and then run `readme-merge` which will merge the sample docs into an example `README.md` file as `/samples/README.md` and then use `less` to view it:
