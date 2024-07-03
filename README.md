@@ -1,5 +1,5 @@
 # readme-merge
-CLI tool to allow merging child documents from a subdirectory into one `README.md` in the root of your repository.
+GiHub Action and CLI tool to allow merging child documents from a subdirectory into one `README.md` in the root of your repository.
 
 **BE CAREFUL**: This will _**overwrite**_ your `README.md` file. 
 
