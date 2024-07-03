@@ -19,11 +19,13 @@ if [ "$(basename "$(pwd)")" != "samples" ] ; then
 fi
 
 # Build the Docker image from the parent directory
-docker build -t readme-merge:sample ../Dockerfile
+docker build -t readme-merge:sample ../
 
 # Run the Docker container with three parameters and remove it after execution
-docker run --rm readme-merge:sample ./md/_index.md . no_commit
+docker run --rm readme-merge:sample \
+  -v "$(pwd)/..:/app/repo" \
+  ./repo/md/_index.md ./repo/. no_commit
 
 # Show
-less ./README.md
+less ./repo/README.md
 
