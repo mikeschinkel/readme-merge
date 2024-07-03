@@ -23,5 +23,5 @@ WORKDIR /app
 COPY --from=builder /app/readme-merge .
 
 # Command to run your application
-ENTRYPOINT ["./readme-merge"]
+ENTRYPOINT ["/app/readme-merge"]
 
