@@ -131,23 +131,23 @@ func main() {
 }
 
 func parseArgs() (indexFile, readmePath string) {
+	var msg string
 	switch {
 	case len(os.Args) < 3:
-		goto err
-	case len(os.Args[1]) == 0:
-		goto err
-	case len(os.Args[2]) == 0:
+		msg = "Not enough arguments"
 		goto err
 	case !fileMustExist(os.Args[1]):
+		msg = fmt.Sprintf("File '%s' does not exist", os.Args[1])
 		goto err
 	case !dirMustExist(os.Args[2]):
+		msg = fmt.Sprintf("Directory '%s' does not exist", os.Args[2])
 		goto err
 	}
 	indexFile = os.Args[1]
 	readmePath = os.Args[2]
 	goto end
 err:
-	_, _ = fmt.Fprintln(os.Stderr, "Usage: readme-merge <index_file> <readme_path>")
+	_, _ = fmt.Fprintf(os.Stderr, "Usage: readme-merge <index_file> <readme_path>\n\n\t%s\n", msg)
 	os.Exit(1)
 end:
 	return indexFile, readmePath
