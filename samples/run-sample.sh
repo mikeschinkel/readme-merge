@@ -12,7 +12,6 @@ if ! docker info >/dev/null 2>&1 ; then
   exit 2
 fi
 
-echo "Check for Docker daemon..."
 if [ "$(basename "$(pwd)")" != "samples" ] ; then
   echo "This script must be run from the './sample' subdirectory off the readme-merge repository root."
   exit 3
