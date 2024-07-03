@@ -1,5 +1,6 @@
 name: 'Generate README'
 description: 'Generate a README.md file from a collection of markdown pages'
+author: "Mike Schinkel <mike@newclarity.net>"
 inputs:
   index_filepath:
     description: 'Filepath of the root index Markdown file containing [merge](./child.md) links'
@@ -9,12 +10,14 @@ inputs:
     description: 'The directory containing the README.md to update; typically this is simply dot (.)'
     required: true
     default: '.'
-outputs:
-  readme:
-    description: 'Generated README.md content'
+
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  args:
-  - ${{ inputs.index_filepath }}
-  - ${{ inputs.readme_dir }}
+  using: "composite"
+  steps:
+  - name: Run Docker Container
+    shell: bash
+    run: |
+      docker run --rm \
+        -v $GITHUB_WORKSPACE:/app/repo \
+        mikeschinkel/readme-merge:latest \
+        /app/repo ${{ inputs.index_filepath }} ${{ inputs.readme_dir }}
