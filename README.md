@@ -126,7 +126,7 @@ Other source files are just Markdown files in the same directory as the `_index.
 Your entry point file — which I will refer to as `_index.md` from here on in this section —  should have one or more `[merge]` directives. They are the same syntax as a link but use the word `merge` as a special keyword.
 
 #### Merged Directives Start in Column One
-From [the samples `_index.md` file](./samples/md/_index.md) — shown below — you can see that the `[merge] directive **MUST** be in the first column or README Merge will ignore it. This allows you to still link the work merge to somewhere if you have that need:
+From [the samples `_index.md` file](./samples/md/_index.md) — shown below — you can see that the `[merge]` directive **MUST** be in the first column or README Merge will ignore it. This allows you to still link the work merge to somewhere if you have that need:
 
 ##### File `./samples/md/_index.md`
 ```markdown
@@ -138,7 +138,7 @@ From [the samples `_index.md` file](./samples/md/_index.md) — shown below — 
 
 #### Merged documents may be Nested
 
-As you can see from [the samples `foo.md` file](./samples/md/foo.md) — merged above and shown below — you can see that the merged files can also contain `[merge] directives:
+As you can see from [the samples `foo.md` file](./samples/md/foo.md) — merged above and shown below — you can see that the merged files can also contain `[merge]` directives:
 
 ##### File `./samples/md/_foo.md`
 ```markdown
@@ -183,9 +183,29 @@ One reason the author built this was he hated having to author Markdown files as
 
 Specifically, if a Markdown file with a level 1 heading — e.g. `#` — is merged in to an `_index.md` file then that level 1 heading would compete with the level 1 heading of the `_index.md` file and thus with the resultant `README.md` output file. 
 
+
 To solve this, README Merge demotes any headings of a merged document by one. For example, if `usage.md` starts with `# Usage` and is merged into `_index.md` then it will appear as `## Usage` in the output `README.md`.
 
+##### In `./md/usage.md`
+```markdown
+## Usage
+```
+##### Whereas in `./README.md`
+```markdown
+### Usage
+```
+
 This is further true of nested documents. This is `docker-usage.md` is merged into `usage.md` which is merged into `_index.md` and `docker-usage.md` has a header of `# Docker Usage` then in the resultant `README.md` it will appear two levels demoted, or `### Docker Usage`. 
+
+##### In `./md/docker-usage.md`
+```markdown
+## Docker Usage
+```
+##### Whereas in `./README.md`
+```markdown
+### Usage
+#### Docker Usage
+```
 
 ### Examples to Review
 
