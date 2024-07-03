@@ -11,7 +11,7 @@ COPY . .
 RUN go mod download
 
 # Build the Go application
-RUN go build -o ./bin/readme-merge
+RUN go build -o /app/bin/readme-merge
 
 # Stage 2: Create a minimal image with the Go binary
 FROM alpine:3.20.1
