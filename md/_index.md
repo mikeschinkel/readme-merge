@@ -11,6 +11,8 @@ GitHub Action, Docker Container, and CLI tool to allow merging child documents i
 
 [merge](./where-used.md)
 
+[merge](./known-issues.md)
+
 [merge](./license.md)
 
 ## End
