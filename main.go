@@ -56,6 +56,7 @@ func (f File) Filepath() string {
 	return filepath.Join(dir, f.Dir, f.Name)
 }
 
+var codeMatcher = regexp.MustCompile("^```")
 var headerMatcher = regexp.MustCompile(`^#`)
 var mergeMatcher = regexp.MustCompile(`^\[merge]\(([^)]+?)\)$`)
 
@@ -63,6 +64,7 @@ func (f File) Parse() (lines string, err error) {
 	var scanner *bufio.Scanner
 	var line string
 	var file *os.File
+	var inCode bool
 
 	slog.Info("Reading", "file", f.Filepath())
 	file, err = os.Open(f.Filepath())
@@ -78,10 +80,17 @@ func (f File) Parse() (lines string, err error) {
 		err = fmt.Errorf("scanner not initialized")
 		goto end
 	}
-
 	for scanner.Scan() {
 		line = scanner.Text()
 		if line == "" {
+			f.Builder.WriteByte('\n')
+			continue
+		}
+		if codeMatcher.MatchString(line) {
+			inCode = !inCode
+		}
+		if inCode {
+			f.Builder.WriteString(line)
 			f.Builder.WriteByte('\n')
 			continue
 		}
