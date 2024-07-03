@@ -25,6 +25,6 @@ docker build -t readme-merge:sample ../
 docker run  -v "$(pwd)/..:/app/repo" --rm \
   readme-merge:sample ./repo/samples/md/_index.md ./repo/samples/. no_commit
 
-# Show
-less ./repo/samples/README.md
+# Show the newly created README.md in the CURRENT (/samples/) directory
+less ./README.md
 
