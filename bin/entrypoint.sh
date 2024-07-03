@@ -18,6 +18,7 @@ main() {
     echo "Failed changing directory to /github/workspace." >&2
     exit 2
   fi
+  pwd
   # Check if README.md has changed
   if ! git diff --quiet "${readme_dir}/README.md"; then
     # Commit and push changes
