@@ -14,8 +14,7 @@ main() {
   git config --global user.name 'readme-merge-github-action[bot]'
   git config --global user.email 'readme-merge-github-action@users.noreply.github.com'
 
-  echo "readme_dir: ${readme_dir}"
-  find / | grep README
+  git status
 
   # Check if README.md has changed
   if ! git diff --quiet "${readme_dir}/README.md"; then
