@@ -21,11 +21,12 @@ fi
 # Build the Docker image from the parent directory
 docker build -t readme-merge:sample ../
 
+
 # Run the Docker container with three parameters and remove it after execution
 docker run --rm readme-merge:sample \
   -v "$(pwd)/..:/app/repo" \
-  ./repo/md/_index.md ./repo/. no_commit
+  ./repo/samples/md/_index.md ./repo/samples/. no_commit
 
 # Show
-less ./repo/README.md
+less ./repo/samples/README.md
 
