@@ -104,29 +104,28 @@ docker run -v "$(pwd)/..:/app/repo" --rm \
 
 
 ## Layout and Syntax
-To understand the layout and syntax expected by README merge you can review the very simple samples files located in `./samples/md` as seen in the screenshot below:  
+Layout and syntax for README Merge has deliberately designed to be very simple. You only need:
 
-![Tree for sample markdown source files](./md/assets/samples-source-tree.png)
-_Directory tree for sample Markdown source files._
+1. Directory for Markdown files
+2. Entry-point source Markdown file 
+3. Other source Markdown files
+4. Merge Directives in Source files
 
-
-Alternately you can look at the source markdown files for this repo's `README.md` in the `./md`:
-
-![Tree for repo's actual markdown source files](./md/assets/actual-source-tree.png)
-_Directory tree for sample Markdown source files._
-
-
-
-#### Entry-point file: `./md/_index.md`
+### Directory and Entry-point File:
 
 Your source directory of Markdown files should have an entry point file which by convention README Merge names `_index.md` in the `./md` subdirectory off the repository's root. 
 
 Note that if you use those names — e.g. `./md/_index.md` — you will not need to specify them when using the GitHub Action. 
 
-#### Syntax for Merge Directives
+### Other Source Markdown Files:
+
+Other source files are just Markdown files in the same directory as the `_index.md`file that can be merged. The first special cases for how they need to be authored is discussed below. 
+
+### Syntax for Merge Directives
 
 Your entry point file — which I will refer to as `_index.md` from here on in this section —  should have one or more `[merge]` directives. They are the same syntax as a link but use the word `merge` as a special keyword.
 
+#### Merged Directives Start in Column One
 From [the samples `_index.md` file](./samples/md/_index.md) — shown below — you can see that the `[merge] directive **MUST** be in the first column or README Merge will ignore it. This allows you to still link the work merge to somewhere if you have that need:
 
 ##### File `./samples/md/_index.md`
@@ -188,13 +187,18 @@ To solve this, README Merge demotes any headings of a merged document by one. Fo
 
 This is further true of nested documents. This is `docker-usage.md` is merged into `usage.md` which is merged into `_index.md` and `docker-usage.md` has a header of `# Docker Usage` then in the resultant `README.md` it will appear two levels demoted, or `### Docker Usage`. 
 
-##### File `./samples/md/_foo.md`
-```markdown
-## Foo Template
+### Examples to Review
 
-This is the Foo template
+To understand the layout and syntax expected by README merge you can review the very simple samples files located in `./samples/md` as seen in the screenshot below:
 
-```
+![Tree for sample markdown source files](./md/assets/samples-source-tree.png)
+_Directory tree for sample Markdown source files._
+
+
+Alternately you can look at the source markdown files for this repo's `README.md` in the `./md`:
+
+![Tree for repo's actual markdown source files](./md/assets/actual-source-tree.png)
+_Directory tree for Markdown source files for this repo._
 
 
 
