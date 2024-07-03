@@ -17,5 +17,5 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-  - /github/workspace/${{ inputs.index_filepath }}
-  - /github/workspace/${{ inputs.readme_dir }}
+  - ${{ inputs.index_filepath }}
+  - ${{ inputs.readme_dir }}
