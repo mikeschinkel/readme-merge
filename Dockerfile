@@ -16,6 +16,9 @@ RUN go build -o ./readme-merge
 # Stage 2: Create a minimal image with the Go binary
 FROM alpine:3.20.1
 
+# Install Git
+RUN apk add --no-cache git
+
 # Set the working directory inside the final container
 WORKDIR /app
 
@@ -23,5 +26,5 @@ WORKDIR /app
 COPY --from=builder /app/readme-merge .
 
 # Command to run your application
-ENTRYPOINT ["/app/readme-merge"]
+ENTRYPOINT ["/app/entrypoint.sh"]
 
