@@ -1,0 +1,22 @@
+name: Generate README
+
+on:
+  push:
+    branches:
+    - main
+    - test-actions
+
+jobs:
+  generate-readme:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Generate README
+      uses: mikeschinkel/readme-merge@main
+      with:
+        index_filepath: './md/_index.md'
+        readme_dir: '.'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
