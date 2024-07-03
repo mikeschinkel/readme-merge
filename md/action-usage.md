@@ -9,7 +9,7 @@ In order to configure this GitHub Action to work for your repository you need to
 ## 1. Create Source Dir and Entry-point File
 README Merge reads an entry point file in a subdirectory that defaults — if you do not specify otherwise in your workflow — to `./md/_index.md` where `/md` is a subdirectory off the root.
 
-For more details about the entry-point file and document syntax see [Layout and Syntax](./layout-syntax.md).
+For more details about the entry-point file and document syntax see [Layout and Syntax](./md/layout-syntax.md).
 
 ## 2. Set Read/Write Access
 As the entire purpose of this action is to build the `README.md` this action cannot perform its purpose unless it can update the GitHub repo. **If you have security concerns about write access see the [security section below](#security-considerations).**
