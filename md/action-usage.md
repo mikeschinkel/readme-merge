@@ -16,7 +16,7 @@ As the entire purpose of this action is to build the `README.md` this action can
 
 To configure your GitHub repo for to allow writes, visit your repo's Settings from the top GitHub menu, select GitHub Actions and then follow the instructions in this screenshot:
 
-![In your repo's Settings select GitHub Actions > General, select the Read and write permissions radio button in the Workflow Permissions section, and click the Save button.](./assets/read-write-access-setting.png)
+![In your repo's Settings select GitHub Actions > General, select the Read and write permissions radio button in the Workflow Permissions section, and click the Save button.](./md/assets/read-write-access-setting.png)
 
 ## 3. Workflow using the Github Action
 Save the following code as `.github/workflows/generate-readme.yaml` in your repo and commit.  
