@@ -14,7 +14,7 @@ cd readme-merge/samples
 ./build-sample-readme.sh
 ```
 
-## Requirements for running `build-sample-readme.sh`
+## Requirements for running `./md/build-sample-readme.sh`
 To build the sample `README.md` you need:
 
 - To be running a flavor of *nix _(Linux, macOS, WSL, etc)_
