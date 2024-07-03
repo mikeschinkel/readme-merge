@@ -19,6 +19,7 @@ main() {
     exit 2
   fi
   pwd
+  find .
   # Check if README.md has changed
   if ! git diff --quiet "${readme_dir}/README.md"; then
     # Commit and push changes
