@@ -14,17 +14,21 @@ main() {
   git config --global user.name 'github-action[bot]'
   git config --global user.email 'github-action@users.noreply.github.com'
 
-#  # See https://medium.com/@janloo/github-actions-detected-dubious-ownership-in-repository-at-github-workspace-how-to-fix-b9cc127d4c04
-#  git config --global --add safe.directory /github/workspace
+  # See https://medium.com/@janloo/github-actions-detected-dubious-ownership-in-repository-at-github-workspace-how-to-fix-b9cc127d4c04
+  git config --global --add safe.directory /github/workspace
 
   git status
+
+  # Extract branch name from GITHUB_REF
+  BRANCH_NAME=${GITHUB_REF#refs/heads/}
 
   # Check if README.md has changed
   if ! git diff --quiet "${readme_dir}/README.md"; then
     # Commit and push changes
     git add "${readme_dir}/README.md"
     git commit -m 'Update README.md [skip ci]'
-    git push
+    git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+    git push origin "HEAD:${BRANCH_NAME}"
   fi
 }
 
