@@ -27,12 +27,10 @@ main() {
   # Extract branch name from GITHUB_REF
   BRANCH_NAME=${GITHUB_REF#refs/heads/}
 
-  # Add in case it was not already tracked
-  git add "${readme_dir}/README.md"
-
   # Check if README.md has changed
   if ! git diff --quiet "${readme_dir}/README.md"; then
     # Commit and push changes
+    git add "${readme_dir}/README.md"
     git commit -m 'Update README.md [skip ci]'
     git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
     git push origin "HEAD:${BRANCH_NAME}"
