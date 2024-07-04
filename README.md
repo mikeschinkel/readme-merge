@@ -28,14 +28,14 @@ In order to configure this GitHub Action to work for your repository you need to
 #### 1. Create Source Dir and Entry-point File
 README Merge reads an entry point file in a subdirectory that defaults — if you do not specify otherwise in your workflow — to `./md/_index.md` where `/md` is a subdirectory off the root.
 
-For more details about the entry-point file and document syntax see [Layout and Syntax](./md/layout-syntax.md).
+For more details about the entry-point file and document syntax see [Layout and Syntax](./layout-syntax.md).
 
 #### 2. Set Read/Write Access
 As the entire purpose of this action is to build the `README.md` this action cannot perform its purpose unless it can update the GitHub repo. **If you have security concerns about write access see the [security section below](#security-considerations).**
 
 To configure your GitHub repo for to allow writes, visit your repo's Settings from the top GitHub menu, select GitHub Actions and then follow the instructions in this screenshot:
 
-![In your repo's Settings select GitHub Actions > General, select the Read and write permissions radio button in the Workflow Permissions section, and click the Save button.](./md/assets/read-write-access-setting.png)
+![In your repo's Settings select GitHub Actions > General, select the Read and write permissions radio button in the Workflow Permissions section, and click the Save button.](md/assets/read-write-access-setting.png)
 
 #### 3. Workflow using the Github Action
 Save the following code as `.github/workflows/generate-readme.yaml` in your repo and commit.  
@@ -216,13 +216,13 @@ This is further true of nested documents. This is `docker-usage.md` is merged in
 
 To understand the layout and syntax expected by README merge you can review the very simple samples files located in `./samples/md` as seen in the screenshot below:
 
-![Tree for sample markdown source files](./md/assets/samples-source-tree.png)
+![Tree for sample markdown source files](md/assets/samples-source-tree.png)
 _Directory tree for sample Markdown source files._
 
 
 Alternately you can look at the source markdown files for this repo's `README.md` in the `./md`:
 
-![Tree for repo's actual markdown source files](./md/assets/actual-source-tree.png)
+![Tree for repo's actual markdown source files](md/assets/actual-source-tree.png)
 _Directory tree for Markdown source files for this repo._
 
 
@@ -231,7 +231,7 @@ _Directory tree for Markdown source files for this repo._
 
 There is a very simply set of Markdown documents in the `/samples/md` directory. 
 
-![Samples directory tree](./md/assets/samples-source-tree.png)
+![Samples directory tree](md/assets/samples-source-tree.png)
 _Directory tree for sample Markdown source files._
 
 ### Building the sample `README.md` 
