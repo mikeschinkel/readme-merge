@@ -2,7 +2,7 @@
 
 There is a very simply set of Markdown documents in the `/samples/md` directory. 
 
-![Samples directory tree](./md/assets/samples-source-tree.png)
+![Samples directory tree](./assets/samples-source-tree.png)
 _Directory tree for sample Markdown source files._
 
 ## Building the sample `README.md` 

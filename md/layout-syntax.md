@@ -111,13 +111,13 @@ This is further true of nested documents. This is `docker-usage.md` is merged in
 
 To understand the layout and syntax expected by README merge you can review the very simple samples files located in `./samples/md` as seen in the screenshot below:
 
-![Tree for sample markdown source files](./md/assets/samples-source-tree.png)
+![Tree for sample markdown source files](./assets/samples-source-tree.png)
 _Directory tree for sample Markdown source files._
 
 
 Alternately you can look at the source markdown files for this repo's `README.md` in the `./md`:
 
-![Tree for repo's actual markdown source files](./md/assets/actual-source-tree.png)
+![Tree for repo's actual markdown source files](./assets/actual-source-tree.png)
 _Directory tree for Markdown source files for this repo._
 
 
