@@ -11,7 +11,7 @@ import (
 
 const brandKeyword = "merge"
 
-var codeMatcher = regexp.MustCompile("^```")
+var codeMatcher = regexp.MustCompile("^\\s*```")
 var headerMatcher = regexp.MustCompile(`^ {0,3}#`)
 var linkMatchRegex = `(!?)\[([^]]*?)]\(([^)]+?)\)`
 var linkMatcher = regexp.MustCompile(linkMatchRegex)

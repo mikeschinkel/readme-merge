@@ -23,6 +23,11 @@ func TestReadme_Merge(t *testing.T) {
 				AddChild(rmmerge.NewReadme("readme/file3.md", "\n# File 3\n")).
 				Root(),
 		},
+		{
+			name:   "Hashes in Code",
+			want:   "\n# Read Me\n\nSome text   ```py\n   # This is a comment\n   ```\nSome more text\n",
+			readme: rmmerge.NewReadme("readme/_index.md", "\n# Read Me\n\nSome text   ```py\n   # This is a comment\n   ```\nSome more text\n"),
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -32,7 +37,7 @@ func TestReadme_Merge(t *testing.T) {
 				return
 			}
 			if got != tt.want {
-				t.Errorf("MergeWithLevel() got = %v, want %v", collapseNewLines(got), tt.want)
+				t.Errorf("MergeWithLevel():\n\tgot =  %v\n\twant = %v", collapseNewLines(got), collapseNewLines(tt.want))
 			}
 		})
 	}
