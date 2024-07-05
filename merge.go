@@ -19,7 +19,6 @@ type Merger interface {
 func Merge(m Merger, dir string, level int) (lines string, err error) {
 	var line string
 	var inCode bool
-	var next bool
 	var scanner *bufio.Scanner
 
 	reader, err := m.Reader()
@@ -49,35 +48,36 @@ func Merge(m Merger, dir string, level int) (lines string, err error) {
 			m.Builder().WriteByte('\n')
 			continue
 		}
+		match := mergeMatcher.FindStringSubmatch(line)
+		if match != nil && match[2] != "!" && match[3] == brandKeyword {
+			var child Merger
+			// Get the filename, or map key for testing
+			name := filepath.Join(dir, match[4])
+			child, err = m.GetChild(name)
+			if err != nil {
+				err = fmt.Errorf("getting child '%s': %w", line, err)
+				goto end
+			}
+			lines, err = child.MergeWithLevel(level + 1)
+			if err != nil {
+				err = fmt.Errorf("merging line '%s': %w", line, err)
+				goto end
+			}
+			m.Builder().WriteString(lines)
+			continue
+		}
 		matches := linkMatcher.FindAllStringSubmatch(line, -1)
 		for _, match := range matches {
-			switch {
-			case len(match) == 0:
+			if len(match[3]) == 0 {
 				continue
-			case match[2] == brandKeyword && strings.TrimSpace(match[1]) != "!":
-				var child Merger
-				key := filepath.Join(dir, match[3])
-				child, err = m.GetChild(key)
-				if err != nil {
-					err = fmt.Errorf("getting child '%s': %w", line, err)
-					goto end
-				}
-				lines, err = child.MergeWithLevel(level + 1)
-				if err != nil {
-					err = fmt.Errorf("merging line '%s': %w", line, err)
-					goto end
-				}
-				m.Builder().WriteString(lines)
-				next = true
-				break
-			default:
-				replacement := fmt.Sprintf("%s[%s](%s)", match[1], match[2], filepath.Join(dir, match[3]))
-				line = strings.Replace(line, match[0], replacement, -1)
+
 			}
-		}
-		if next {
-			next = false
-			continue
+			if match[3][0] == '#' {
+				// Is a `#fragment`,do not prepend the directory
+				continue
+			}
+			replacement := fmt.Sprintf("%s[%s](%s)", match[1], match[2], filepath.Join(dir, match[3]))
+			line = strings.Replace(line, match[0], replacement, -1)
 		}
 		if level != 0 && headerMatcher.MatchString(line) {
 			line = strings.Repeat("#", level) + line

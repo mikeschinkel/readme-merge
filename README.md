@@ -28,7 +28,7 @@ In order to configure this GitHub Action to work for your repository you need to
 #### 1. Create Source Dir and Entry-point File
 README Merge reads an entry point file in a subdirectory that defaults — if you do not specify otherwise in your workflow — to `./md/_index.md` where `/md` is a subdirectory off the root.
 
-For more details about the entry-point file and document syntax see [Layout and Syntax](./layout-syntax.md).
+For more details about the entry-point file and document syntax see [Layout and Syntax](md/layout-syntax.md).
 
 #### 2. Set Read/Write Access
 As the entire purpose of this action is to build the `README.md` this action cannot perform its purpose unless it can update the GitHub repo. **If you have security concerns about write access see the [security section below](#security-considerations).**
@@ -126,7 +126,7 @@ Other source files are just Markdown files in the same directory as the `_index.
 Your entry point file — which I will refer to as `_index.md` from here on in this section —  should have one or more `[merge]` directives. They are the same syntax as a link but use the word `merge` as a special keyword.
 
 #### Merged Directives Start in Column One
-From [the samples `_index.md` file](./samples/md/_index.md) — shown below — you can see that the `[merge]` directive **MUST** be in the first column or README Merge will ignore it. This allows you to still link the work merge to somewhere if you have that need:
+From [the samples `_index.md` file](md/samples/md/_index.md) — shown below — you can see that the `[merge]` directive **MUST** be in the first column or README Merge will ignore it. This allows you to still link the work merge to somewhere if you have that need:
 
 ##### File `./samples/md/_index.md`
 ```markdown
@@ -140,7 +140,7 @@ From [the samples `_index.md` file](./samples/md/_index.md) — shown below — 
 
 #### Merged documents may be Nested
 
-As you can see from [the samples `foo.md` file](./samples/md/foo.md) — merged above and shown below — you can see that the merged files can also contain `[merge]` directives:
+As you can see from [the samples `foo.md` file](md/samples/md/foo.md) — merged above and shown below — you can see that the merged files can also contain `[merge]` directives:
 
 ##### File `./samples/md/_foo.md`
 ```markdown
@@ -247,13 +247,13 @@ cd readme-merge/samples
 To build the sample `README.md` you need:
 
 - To be running a flavor of *nix _(Linux, macOS, WSL, etc)_
-- To have a running [Docker daemon installed](https://docs.docker.com/engine/install/).
+- To have a running [Docker daemon installed](md/https:/docs.docker.com/engine/install).
 
 There is not batch file or PowerShell script for use if you are running Windows but if you are motivated you can port `./samples/build-sample-readme.sh` and support a PR to include for future Windows users.  
 
 ## Where Used
-- [github.com/mikeschinkel/readme-merge](https://github.com/mikeschinkel/readme-merge)
-- [github.com/mikeschinkel/php-file-scoped-visibility-rfc](https://github.com/mikeschinkel/php-file-scoped-visibility-rfc)
+- [github.com/mikeschinkel/readme-merge](md/https:/github.com/mikeschinkel/readme-merge)
+- [github.com/mikeschinkel/php-file-scoped-visibility-rfc](md/https:/github.com/mikeschinkel/php-file-scoped-visibility-rfc)
 
 If you use README Merge please consider submitting a pull request with a link to your repo using to contained in `./md/where-used.md`.
 

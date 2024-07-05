@@ -3,18 +3,10 @@ package readme_merge
 import (
 	"errors"
 	"fmt"
-	"io"
 	"io/fs"
 	"log/slog"
 	"os"
 )
-
-func mustClose(c io.Closer) {
-	err := c.Close()
-	if err != nil {
-		slog.Warn("Error occurred when calling mustClose()", "error", err)
-	}
-}
 
 func fileExists(file string) (exists bool, err error) {
 	info, err := os.Stat(file)
