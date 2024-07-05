@@ -5,8 +5,17 @@ import (
 	"fmt"
 	"io"
 	"path/filepath"
+	"regexp"
 	"strings"
 )
+
+const brandKeyword = "merge"
+
+var codeMatcher = regexp.MustCompile("^```")
+var headerMatcher = regexp.MustCompile(`^ {0,3}#`)
+var linkMatchRegex = `(!?)\[([^]]*?)]\(([^)]+?)\)`
+var linkMatcher = regexp.MustCompile(linkMatchRegex)
+var mergeMatcher = regexp.MustCompile(`^( {0,3})` + linkMatchRegex)
 
 type Merger interface {
 	MergeWithLevel(level int) (string, error)

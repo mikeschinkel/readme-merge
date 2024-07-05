@@ -3,15 +3,8 @@ package readme_merge
 import (
 	"fmt"
 	"io"
-	"regexp"
 	"strings"
 )
-
-const brandKeyword = "merge"
-
-var codeMatcher = regexp.MustCompile("^```")
-var headerMatcher = regexp.MustCompile(`^ {0,3}#`)
-var linkMatcher = regexp.MustCompile(`^( {0,3}!?)\[([^]]*?)]\(([^)]+?)\)`)
 
 var _ Merger = (*Readme)(nil)
 
