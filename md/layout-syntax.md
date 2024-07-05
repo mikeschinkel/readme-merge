@@ -21,7 +21,7 @@ Other source files are just Markdown files in the same directory as the `_index.
 Your entry point file — which I will refer to as `_index.md` from here on in this section —  should have one or more `[merge]` directives. They are the same syntax as a link but use the word `merge` as a special keyword.
 
 ### Merged Directives Start in Column One
-From [the samples `_index.md` file](./samples/md/_index.md) — shown below — you can see that the `[merge]` directive **MUST** be in the first column or README Merge will ignore it. This allows you to still link the work merge to somewhere if you have that need:
+From [the samples `_index.md` file](../samples/md/_index.md) — shown below — you can see that the `[merge]` directive **MUST** be in the first column or README Merge will ignore it. This allows you to still link the work merge to somewhere if you have that need:
 
 #### File `./samples/md/_index.md`
 ```markdown
@@ -35,7 +35,7 @@ From [the samples `_index.md` file](./samples/md/_index.md) — shown below — 
 
 ### Merged documents may be Nested
 
-As you can see from [the samples `foo.md` file](./samples/md/foo.md) — merged above and shown below — you can see that the merged files can also contain `[merge]` directives:
+As you can see from [the samples `foo.md` file](../samples/md/foo.md) — merged above and shown below — you can see that the merged files can also contain `[merge]` directives:
 
 #### File `./samples/md/_foo.md`
 ```markdown
