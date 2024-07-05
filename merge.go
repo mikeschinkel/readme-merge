@@ -19,6 +19,7 @@ var mergeMatcher = regexp.MustCompile(`^( {0,3})` + linkMatchRegex)
 var httpMatcher = regexp.MustCompile(`^https?://`)
 
 type Merger interface {
+	Merge() (string, error)
 	MergeWithLevel(level int) (string, error)
 	Reader() (io.Reader, error)
 	Builder() *strings.Builder

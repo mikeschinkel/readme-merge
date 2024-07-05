@@ -54,3 +54,7 @@ func (rm *Readme) Builder() *strings.Builder {
 	}
 	return rm.builder
 }
+
+func (rm *Readme) Merge() (string, error) {
+	return rm.MergeWithLevel(0)
+}
