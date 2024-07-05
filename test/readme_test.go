@@ -17,10 +17,10 @@ func TestReadme_Merge(t *testing.T) {
 		{
 			name: "Recursive includes",
 			want: "\n# Read Me\n\n## File 1\n\n### File 2\n\n#### File 3\n",
-			readme: rmmerge.NewReadme("md/_index.md", "\n# Read Me\n[merge](./file1.md)\n").
-				AddChild(rmmerge.NewReadme("md/file1.md", "\n# File 1\n[merge](./file2.md)\n")).
-				AddChild(rmmerge.NewReadme("md/file2.md", "\n# File 2\n[merge](./file3.md)\n")).
-				AddChild(rmmerge.NewReadme("md/file3.md", "\n# File 3\n")).
+			readme: rmmerge.NewReadme("readme/_index.md", "\n# Read Me\n[merge](./file1.md)\n").
+				AddChild(rmmerge.NewReadme("readme/file1.md", "\n# File 1\n[merge](./file2.md)\n")).
+				AddChild(rmmerge.NewReadme("readme/file2.md", "\n# File 2\n[merge](./file3.md)\n")).
+				AddChild(rmmerge.NewReadme("readme/file3.md", "\n# File 3\n")).
 				Root(),
 		},
 	}

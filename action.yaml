@@ -5,7 +5,7 @@ inputs:
   index_filepath:
     description: 'Filepath of the root index Markdown file containing [merge](./child.md) links'
     required: true
-    default: './md/_index.md'
+    default: './readme/_index.md'
   readme_dir:
     description: 'The directory containing the README.md to update; typically this is simply dot (.)'
     required: true

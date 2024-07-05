@@ -16,7 +16,7 @@ jobs:
     - name: Generate README
       uses: mikeschinkel/readme-merge@main
       with:
-        index_filepath: './md/_index.md'
+        index_filepath: './readme/_index.md'
         readme_dir: '.'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

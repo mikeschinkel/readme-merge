@@ -16,7 +16,7 @@ docker build -t readme-merge:your_tag ../
 
 docker run -v "$(pwd)/..:/app/repo" --rm \
   readme-merge:local_usage \
-    ./repo/samples/md/_index.md \
+    ./repo/samples/readme/_index.md \
     ./repo/samples/. \
     no_commit
 ```

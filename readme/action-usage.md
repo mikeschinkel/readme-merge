@@ -7,7 +7,7 @@ In order to configure this GitHub Action to work for your repository you need to
 2. Add a workflow .YAML file
 
 ## 1. Create Source Dir and Entry-point File
-README Merge reads an entry point file in a subdirectory that defaults — if you do not specify otherwise in your workflow — to `./md/_index.md` where `/md` is a subdirectory off the root.
+README Merge reads an entry point file in a subdirectory that defaults — if you do not specify otherwise in your workflow — to `./readme/_index.md` where `/readme` is a subdirectory off the root.
 
 For more details about the entry-point file and document syntax see [Layout and Syntax](./layout-syntax.md).
 
@@ -22,7 +22,7 @@ To configure your GitHub repo for to allow writes, visit your repo's Settings fr
 Save the following code as `.github/workflows/generate-readme.yaml` in your repo and commit.  
 
 No changes necessary if:
-1. Your source Markdown files are in a subdirectory `/md` off your repo's root,
+1. Your source Markdown files are in a subdirectory `/readme` off your repo's root,
 2. Your entry point document in your subdirectory is named `_index.md`,
 3. You use `main` as your primary branch, and 
 4. You want to update the `README.md` on push the `main`.
@@ -48,7 +48,7 @@ jobs:
     - name: Generate README
       uses: mikeschinkel/readme-merge@main
       with:
-        index_filepath: './md/_index.md'
+        index_filepath: './readme/_index.md'
         readme_dir: '.'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

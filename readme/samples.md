@@ -1,6 +1,6 @@
 # Samples
 
-There is a very simply set of Markdown documents in the `/samples/md` directory. 
+There is a very simply set of Markdown documents in the `/samples/readme` directory. 
 
 ![Samples directory tree](./assets/samples-source-tree.png)
 _Directory tree for sample Markdown source files._
@@ -14,7 +14,7 @@ cd readme-merge/samples
 ./build-sample-readme.sh
 ```
 
-## Requirements for running `./md/build-sample-readme.sh`
+## Requirements for running `./samples/build-sample-readme.sh`
 To build the sample `README.md` you need:
 
 - To be running a flavor of *nix _(Linux, macOS, WSL, etc)_
