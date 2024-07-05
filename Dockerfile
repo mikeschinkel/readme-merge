@@ -7,6 +7,9 @@ WORKDIR /app
 # Copy the Go application source code into the container
 COPY . .
 
+# Set the working directory to the cmd subdirectory
+WORKDIR /app/cmd
+
 # Download all dependencies. Dependencies will be cached if the go.mod and go.sum files are not changed
 RUN go mod download
 

@@ -7,7 +7,7 @@ main() {
 
   # Run your Go application to generate README.md
   if ! /app/bin/readme-merge "${index_filepath}" "${readme_dir}" ; then
-    echo "README Merge failed. README.md likely not updated." >&2
+    printf "\n%s\n" "README Merge failed. README.md likely not updated." >&2
     exit 1
   fi
 
