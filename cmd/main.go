@@ -4,19 +4,21 @@ import (
 	"fmt"
 	"log/slog"
 	"os"
+
+	rmmerge "github.com/mikeschinkel/readme-merge"
 )
 
 func main() {
 	indexFile, readmeDir := parseArgs()
 	slog.Info("Initializing")
-	file := NewInputFile(indexFile, 0)
+	file := rmmerge.NewInputFile(indexFile)
 	slog.Info("Parsing", "index_file", indexFile)
-	readme, err := file.Parse()
+	readme, err := file.Merge()
 	if err != nil {
 		slog.Error("Parsing index file", "index_file", indexFile, "error", err)
 		os.Exit(2)
 	}
-	file = NewOutputFile(readmeDir)
+	file = rmmerge.NewOutputFile(readmeDir)
 	slog.Info("Saving", "readme_file", file.Filepath())
 	err = file.Save(readme)
 	if err != nil {
@@ -32,10 +34,10 @@ func parseArgs() (indexFile, readmePath string) {
 	case len(os.Args) < 3:
 		msg = "Not enough arguments"
 		goto err
-	case !fileMustExist(os.Args[1]):
+	case !rmmerge.FileMustExist(os.Args[1]):
 		msg = fmt.Sprintf("File '%s' does not exist", os.Args[1])
 		goto err
-	case !dirMustExist(os.Args[2]):
+	case !rmmerge.DirMustExist(os.Args[2]):
 		msg = fmt.Sprintf("Directory '%s' does not exist", os.Args[2])
 		goto err
 	}
