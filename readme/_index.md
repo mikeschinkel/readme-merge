@@ -3,9 +3,9 @@ GitHub Action, Docker Container, and CLI tool to allow merging child documents i
 
 **BE CAREFUL**: This will _**overwrite**_ your `README.md` file. 
 
-[merge](./usage.md)
-
 [merge](./layout-syntax.md)
+
+[merge](./usage.md)
 
 [merge](./samples.md)
 
