@@ -16,6 +16,7 @@ var headerMatcher = regexp.MustCompile(`^ {0,3}#`)
 var linkMatchRegex = `(!?)\[([^]]*?)]\(([^)]+?)\)`
 var linkMatcher = regexp.MustCompile(linkMatchRegex)
 var mergeMatcher = regexp.MustCompile(`^( {0,3})` + linkMatchRegex)
+var httpMatcher = regexp.MustCompile(`^https?://`)
 
 type Merger interface {
 	MergeWithLevel(level int) (string, error)
@@ -82,7 +83,11 @@ func Merge(m Merger, dir string, level int) (lines string, err error) {
 
 			}
 			if match[3][0] == '#' {
-				// Is a `#fragment`,do not prepend the directory
+				// Is a `#fragment`, do not prepend the directory
+				continue
+			}
+			if httpMatcher.MatchString(match[3]) {
+				// Starts with `http(s)://`, do not prepend the directory
 				continue
 			}
 			replacement := fmt.Sprintf("%s[%s](%s)", match[1], match[2], filepath.Join(dir, match[3]))

@@ -247,13 +247,13 @@ cd readme-merge/samples
 To build the sample `README.md` you need:
 
 - To be running a flavor of *nix _(Linux, macOS, WSL, etc)_
-- To have a running [Docker daemon installed](md/https:/docs.docker.com/engine/install).
+- To have a running [Docker daemon installed](https://docs.docker.com/engine/install/).
 
 There is not batch file or PowerShell script for use if you are running Windows but if you are motivated you can port `./samples/build-sample-readme.sh` and support a PR to include for future Windows users.  
 
 ## Where Used
-- [github.com/mikeschinkel/readme-merge](md/https:/github.com/mikeschinkel/readme-merge)
-- [github.com/mikeschinkel/php-file-scoped-visibility-rfc](md/https:/github.com/mikeschinkel/php-file-scoped-visibility-rfc)
+- [github.com/mikeschinkel/readme-merge](https://github.com/mikeschinkel/readme-merge)
+- [github.com/mikeschinkel/php-file-scoped-visibility-rfc](https://github.com/mikeschinkel/php-file-scoped-visibility-rfc)
 
 If you use README Merge please consider submitting a pull request with a link to your repo using to contained in `./md/where-used.md`.
 
