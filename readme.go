@@ -3,29 +3,48 @@ package readme_merge
 import (
 	"fmt"
 	"io"
+	"path/filepath"
 	"strings"
 )
 
 var _ Merger = (*Readme)(nil)
 
 type Readme struct {
+	Dir      string
 	Name     string
 	reader   io.Reader
 	builder  *strings.Builder
-	children map[string]Merger
+	children map[string]*Readme
+	parent   *Readme
 }
 
 func NewReadme(name string, content string) *Readme {
 	reader := strings.NewReader(content)
 	return &Readme{
-		Name:     name,
+		Dir:      filepath.Dir(name),
+		Name:     filepath.Base(name),
 		reader:   reader,
-		children: make(map[string]Merger),
+		children: make(map[string]*Readme),
 	}
 }
 
-func (rm *Readme) AddChild(m Merger) {
-	rm.children[rm.Name] = m
+func (rm *Readme) Filepath() string {
+	return filepath.Join(rm.Dir, rm.Name)
+}
+
+func (rm *Readme) AddChild(m Merger) *Readme {
+	child := m.(*Readme)
+	child.parent = rm
+	path := filepath.Join(rm.Dir, child.Name)
+	rm.children[path] = child
+	return child
+}
+func (rm *Readme) Root() (root *Readme) {
+	root = rm
+	for root.parent != nil {
+		root = root.parent
+	}
+	return root
 }
 
 func (rm *Readme) GetChild(e string) (m Merger, err error) {
@@ -37,7 +56,7 @@ func (rm *Readme) GetChild(e string) (m Merger, err error) {
 }
 
 func (rm *Readme) MergeWithLevel(level int) (string, error) {
-	return Merge(rm, rm.Name, level)
+	return Merge(rm, rm.Dir, level)
 }
 
 func (rm *Readme) Reader() (io.Reader, error) {
